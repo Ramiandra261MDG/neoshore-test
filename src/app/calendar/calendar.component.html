@@ -1,0 +1,90 @@
+<!-- calendar.component.html -->
+<div class="container my-3">
+  <h1 class=""><u>PLANIFICATION DES EQUIPES</u></h1>
+
+  <!-- Ajoutez ce formulaire pour l'ajout d'événements -->
+  <form [formGroup]="eventForm" (ngSubmit)="addEvent()">
+    <div class="row">
+      <div class="col-6 mb-2">
+        <label for="name" class="form-label">Nom</label>
+        <input
+          id="name"
+          class="form-control"
+          type="text"
+          formControlName="name"
+        />
+      </div>
+      <div class="col-6 mb-2">
+        <label for="title" class="form-label">Titre</label>
+        <input
+          id="title"
+          class="form-control"
+          type="text"
+          formControlName="title"
+        />
+      </div>
+    </div>
+    <div class="mb-2">
+      <label for="description" class="form-label">Description</label>
+      <input
+        id="description"
+        class="form-control"
+        type="text"
+        formControlName="description"
+      />
+    </div>
+    <div class="row">
+      <div class="col-6 mb-2">
+        <label for="date" class="form-label">Date</label>
+
+        <ngb-datepicker formControlName="date"></ngb-datepicker>
+      </div>
+      <div class="col-6 mb-2" style="width: 75px">
+        <label for="color" class="form-label">Couleur</label>
+        <input
+          id="color"
+          class="form-control"
+          type="color"
+          formControlName="color"
+        />
+      </div>
+    </div>
+    <div class="mb-2">
+      <label for="image" class="form-label">Image</label>
+      <input
+        id="image"
+        class="form-control"
+        type="text"
+        formControlName="image"
+      />
+    </div>
+    <button class="btn btn-primary" type="submit">Ajouter l'événement</button>
+  </form>
+  <button class="btn btn-outline-primary mb-2 me-2" (click)="openLg(content)">
+    Large modal
+  </button>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="modal.dismiss('Cross click')"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <p>One fine body&hellip;</p>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="modal.close('Close click')"
+      >
+        Close
+      </button>
+    </div>
+  </ng-template>
+  <full-calendar [options]="calendarOptions"></full-calendar>
+</div>
